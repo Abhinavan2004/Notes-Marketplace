@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const orderController_1 = require("../controllers/orderController");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+const router = (0, express_1.Router)();
+router.post('/', authMiddleware_1.requireAuth, orderController_1.createOrder);
+router.get('/', authMiddleware_1.requireAuth, orderController_1.listMyOrders);
+router.get('/:noteId/download', authMiddleware_1.requireAuth, orderController_1.downloadNote);
+router.post('/webhook', orderController_1.handleWebhook);
+exports.default = router;
