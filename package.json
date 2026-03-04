@@ -1,5 +1,14 @@
 {
+  "name": "notes-marketplace",
+  "private": true,
   "dependencies": {
     "@insforge/sdk": "^1.1.6-dev.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,client -c red,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix server && npm run build --prefix client"
   }
 }
